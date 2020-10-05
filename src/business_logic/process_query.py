@@ -25,8 +25,11 @@ class BusinessLogic:
     def get_version(self):
         return self._config['DEFAULT']['version']
 
+    def get_myName(self):
+        return self._config['DEFAULT']['myName']
+
     def get_bucket_name(self):
-        return f'{self._root_bucket}_{self.get_version().replace(".", "")}'
+        return f'{self._root_bucket}_{self.get_version().replace(".", "")}{self.get_myName()}'
 
     def _get_or_create_model(self, ticker):
         log = logging.getLogger()
@@ -44,9 +47,17 @@ class BusinessLogic:
         return f'{ticker}.pkl'
 
     def _create_bucket(self):
+        bucket = self.get_bucket_name()
+        print(bucket)
         create_bucket(self.get_bucket_name())
+
 
     def do_predictions_for(self, ticker):
         model = self._get_or_create_model(ticker)
         predictions = model.predict(ticker)
         return predictions
+
+if __name__ == '__main__':
+    business_logic = create_business_logic()
+    business_logic.get_bucket_name()
+    print(business_logic.get_bucket_name())

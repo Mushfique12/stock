@@ -53,3 +53,6 @@ def get_model_from_bucket(model_filename, bucket_name):
         model = None
 
     return model
+
+if __name__ == '__main__':
+    create_bucket("mushfique1293")
