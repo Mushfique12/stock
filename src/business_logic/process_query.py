@@ -61,3 +61,4 @@ if __name__ == '__main__':
     business_logic = create_business_logic()
     business_logic.get_bucket_name()
     print(business_logic.get_bucket_name())
+    print("hello")
