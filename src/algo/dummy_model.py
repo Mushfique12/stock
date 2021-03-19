@@ -27,7 +27,7 @@ class Stock_model(BaseEstimator, TransformerMixin):
 
     def __init__(self, data_fetcher):
         self.log = logging.getLogger()
-        self.lr = LinearRegression()
+        self.lr = LinearRegression() #its an object of LinearRegression class (OBject are like variables of type LinearRegression)
         self._data_fetcher = data_fetcher
         self.log.warning('here')
 
